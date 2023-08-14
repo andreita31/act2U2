@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey"></canvas>
+    <script>
+        const c = document.getElementById("myCanvas");
+        const ctx = c.getContext("2d");
+
+        ctx.fillRect(20, 20, 100, 100);
+        ctx.fillStyle = "rgb(0, 0, 255)";
+        ctx.fillRect(140, 140, 100, 100);
+        ctx.fillStyle = "rgba(255, 0, 0, .5)";
+        ctx.fillRect(80, 80, 100, 100);
+    </script>
+</body>
+</html>
