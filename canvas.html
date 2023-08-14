@@ -6,7 +6,7 @@
     <title>Canvas</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey"></canvas>
+    <canvas id="myCanvas" width="800" height="400" style="border:1px solid grey"></canvas>
     <script>
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
@@ -16,6 +16,39 @@
         ctx.fillRect(140, 140, 100, 100);
         ctx.fillStyle = "rgba(255, 0, 0, .5)";
         ctx.fillRect(80, 80, 100, 100);
+
+        // crear triangulo
+        // ctx.fillStyle = "rgba(255, 0, 255, .5)";
+        ctx.strokeStyle = "rgb(150, 0, 255)";
+        ctx.beginPath();
+        ctx.moveTo(300, 20);
+        ctx.lineTo(360, 150);
+        ctx.lineTo(240, 150);
+        ctx.lineTo(300, 20);
+        ctx.stroke();
+
+        // crear lineas
+        ctx.beginPath();
+        ctx.moveTo(300, 20);
+        ctx.lineTo(300, 150);
+        ctx.stroke();
+        ctx.closePath();
+
+        // cerar circulos
+        ctx.beginPath();
+        ctx.arc(300, 112, 37, 0, 2*Math.PI);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.fillStyle = "pink";
+        ctx.strokeStyle = "purple";
+        ctx.beginPath();
+        ctx.arc(500, 100, 37, 0, 2*Math.PI);
+        ctx.lineWidth = 5;
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
     </script>
 </body>
 </html>
