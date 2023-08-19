@@ -56,6 +56,14 @@
         ctx.strokeStyle = "black";
         ctx.strokeText("Andrea", 400, 200);
 
+        var grd = ctx.createLinearGradient(400, 0, 170, 0);
+        grd.addColorStop(0, "blue");
+        grd.addColorStop(1, "red");
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(200, 200, 100, 100);
+
+        
     </script>
 </body>
 </html>
