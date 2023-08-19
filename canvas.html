@@ -44,10 +44,17 @@
         ctx.strokeStyle = "purple";
         ctx.beginPath();
         ctx.arc(500, 100, 37, 0, 2*Math.PI);
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 3;
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
+
+        ctx.font = "50px Arial black";
+        ctx.fillStyle = "purple";
+        ctx.fillText("Andrea", 400, 200);
+        
+        ctx.strokeStyle = "black";
+        ctx.strokeText("Andrea", 400, 200);
 
     </script>
 </body>
