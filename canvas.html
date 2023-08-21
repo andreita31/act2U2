@@ -24,16 +24,25 @@
     <script>
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
-        var color;
-        ctx.fillStyle = color;
+        var figura = true;
 
         c.addEventListener("click", (e)=>{
             // console.log(e);
-            ctx.beginPath();
-            ctx.arc(e.layerX, e.layerY, 37, 0, 2*Math.PI);
-            ctx.fill();
-            ctx.stroke();        
-        });
+            if(figura){
+                ctx.beginPath();
+                ctx.arc(e.layerX, e.layerY, 50, 0, 2*Math.PI);
+                ctx.fill();
+                ctx.stroke(); 
+            }else{
+                ctx.fillRect(e.layerX-50, e.layerY-50, 100, 100);
+                ctx.strokeRect(e.layerX-50, e.layerY-50, 100, 100);
+            }
+
+        })
+
+        c.addEventListener("mouseout", (e)=>{
+            figura = !figura;
+        })
 
         c.addEventListener("mouseover", (e)=>{
             // console.log("mouseover");
