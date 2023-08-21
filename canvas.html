@@ -25,6 +25,7 @@
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
         var figura = true;
+        var pressed = false;
 
         c.addEventListener("click", (e)=>{
             // console.log(e);
@@ -52,9 +53,19 @@
 
         c.addEventListener("mousemove", (e)=>{
             // console.log("mousemove");
-            ctx.beginPath();
-            ctx.arc(e.layerX, e.layerY, 5, 0, 2*Math.PI);
-            ctx.fill();
+            if(pressed){
+                ctx.beginPath();
+                ctx.arc(e.layerX, e.layerY, 5, 0, 2*Math.PI);
+                ctx.fill();
+            }
+        })
+
+        c.addEventListener("mousedown", (e)=>{
+            pressed = true;
+        })
+
+        c.addEventListener("mouseup", (e)=>{
+            pressed = false;
         })
 
         function random_rgba() {
