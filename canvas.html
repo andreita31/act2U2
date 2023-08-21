@@ -6,6 +6,10 @@
     <title>Canvas</title>
     <style>
         body{
+            background: black;
+        }
+
+        canvas{
             background: lightgray;
         }
 
@@ -15,79 +19,91 @@
     </style>
 </head>
 <body>
-    <canvas id="myCanvas" width="800" height="400" style="border:1px solid grey"></canvas>
+    <canvas id="myCanvas" width="600" height="600" style="border:1px solid grey"></canvas>
     <img id="michi" src="gato-negro.png" alt="michi">
     <script>
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
 
-        ctx.fillRect(20, 20, 100, 100);
-        ctx.fillStyle = "rgb(0, 0, 255)";
-        ctx.fillRect(140, 140, 100, 100);
-        ctx.fillStyle = "rgba(255, 0, 0, .5)";
-        ctx.fillRect(80, 80, 100, 100);
-
-        // crear triangulo
-        // ctx.fillStyle = "rgba(255, 0, 255, .5)";
-        ctx.strokeStyle = "rgb(150, 0, 255)";
-        ctx.beginPath();
-        ctx.moveTo(300, 20);
-        ctx.lineTo(360, 150);
-        ctx.lineTo(240, 150);
-        ctx.lineTo(300, 20);
-        ctx.stroke();
-
-        // crear lineas
-        ctx.beginPath();
-        ctx.moveTo(300, 20);
-        ctx.lineTo(300, 150);
-        ctx.stroke();
-        ctx.closePath();
-
-        // cerar circulos
-        ctx.beginPath();
-        ctx.arc(300, 112, 37, 0, 2*Math.PI);
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.fillStyle = "pink";
-        ctx.strokeStyle = "purple";
-        ctx.beginPath();
-        ctx.arc(500, 100, 37, 0, 2*Math.PI);
-        ctx.lineWidth = 3;
-        ctx.fill();
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.font = "50px Arial black";
-        ctx.fillStyle = "purple";
-        ctx.fillText("Andrea", 400, 200);
-        
-        ctx.strokeStyle = "black";
-        ctx.strokeText("Andrea", 400, 200);
-
-        var grd = ctx.createLinearGradient(400, 0, 170, 0);
-        grd.addColorStop(0, "blue");
-        grd.addColorStop(1, "red");
-
-        ctx.fillStyle = grd;
-        ctx.fillRect(200, 200, 100, 100);
-
-        // Create Radial
-        const grdC = ctx.createRadialGradient(300, 300, 0, 300, 300, 70);
-        grdC.addColorStop(0, "red");
-        grdC.addColorStop(0.5, "white");
-        grdC.addColorStop(1, "red");
-
-        // Draw a filled Rectangle
-        ctx.fillStyle = grdC;
-        ctx.fillRect(260, 260, 100, 100);
-        
-        const image = document.getElementById("michi");
-        ctx.drawImage(image, 300, 200);
-        image.addEventListener("load", (e) => {
-            ctx.drawImage(image, 450, 250);
+        c.addEventListener("click", (e)=>{
+            console.log(e);
+            ctx.fillStyle = "rgba(255, 0, 255, .5)";
+            ctx.strokeStyle = "purple";
+            ctx.beginPath();
+            ctx.arc(e.layerX, e.layerY, 37, 0, 2*Math.PI);
+            ctx.lineWidth = 2;
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
         });
+
+        // ctx.fillRect(20, 20, 100, 100);
+        // ctx.fillStyle = "rgb(0, 0, 255)";
+        // ctx.fillRect(140, 140, 100, 100);
+        // ctx.fillStyle = "rgba(255, 0, 0, .5)";
+        // ctx.fillRect(80, 80, 100, 100);
+
+        // // crear triangulo
+        // // ctx.fillStyle = "rgba(255, 0, 255, .5)";
+        // ctx.strokeStyle = "rgb(150, 0, 255)";
+        // ctx.beginPath();
+        // ctx.moveTo(300, 20);
+        // ctx.lineTo(360, 150);
+        // ctx.lineTo(240, 150);
+        // ctx.lineTo(300, 20);
+        // ctx.stroke();
+
+        // // crear lineas
+        // ctx.beginPath();
+        // ctx.moveTo(300, 20);
+        // ctx.lineTo(300, 150);
+        // ctx.stroke();
+        // ctx.closePath();
+
+        // // cerar circulos
+        // ctx.beginPath();
+        // ctx.arc(300, 112, 37, 0, 2*Math.PI);
+        // ctx.stroke();
+        // ctx.closePath();
+
+        // ctx.fillStyle = "pink";
+        // ctx.strokeStyle = "purple";
+        // ctx.beginPath();
+        // ctx.arc(500, 100, 37, 0, 2*Math.PI);
+        // ctx.lineWidth = 3;
+        // ctx.fill();
+        // ctx.stroke();
+        // ctx.closePath();
+
+        // ctx.font = "50px Arial black";
+        // ctx.fillStyle = "purple";
+        // ctx.fillText("Andrea", 400, 200);
+        
+        // ctx.strokeStyle = "black";
+        // ctx.strokeText("Andrea", 400, 200);
+
+        // var grd = ctx.createLinearGradient(400, 0, 170, 0);
+        // grd.addColorStop(0, "blue");
+        // grd.addColorStop(1, "red");
+
+        // ctx.fillStyle = grd;
+        // ctx.fillRect(200, 200, 100, 100);
+
+        // // Create Radial
+        // const grdC = ctx.createRadialGradient(300, 300, 0, 300, 300, 70);
+        // grdC.addColorStop(0, "red");
+        // grdC.addColorStop(0.5, "white");
+        // grdC.addColorStop(1, "red");
+
+        // // Draw a filled Rectangle
+        // ctx.fillStyle = grdC;
+        // ctx.fillRect(260, 260, 100, 100);
+        
+        // const image = document.getElementById("michi");
+        // ctx.drawImage(image, 300, 200);
+        // image.addEventListener("load", (e) => {
+        //     ctx.drawImage(image, 450, 250);
+        // });
     </script>
 </body>
 </html>
