@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas</title>
+    <style>
+        body{
+            background: lightgray;
+        }
+
+        img{
+            display: none;
+        }
+    </style>
 </head>
-<body style="background: lightgray;">
+<body>
     <canvas id="myCanvas" width="800" height="400" style="border:1px solid grey"></canvas>
+    <img id="michi" src="gato-negro.png" alt="michi">
     <script>
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
@@ -73,6 +83,11 @@
         ctx.fillStyle = grdC;
         ctx.fillRect(260, 260, 100, 100);
         
+        const image = document.getElementById("michi");
+        ctx.drawImage(image, 300, 200);
+        image.addEventListener("load", (e) => {
+            ctx.drawImage(image, 450, 250);
+        });
     </script>
 </body>
 </html>
