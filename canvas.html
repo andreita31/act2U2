@@ -10,7 +10,7 @@
         }
 
         canvas{
-            background: lightgray;
+            background: white;
         }
 
         img{
@@ -19,59 +19,82 @@
     </style>
 </head>
 <body>
-    <canvas id="myCanvas" width="600" height="600" style="border:1px solid grey"></canvas>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid grey"></canvas>
     <img id="michi" src="gato-negro.png" alt="michi">
     <script>
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
-        var figura = true;
-        var pressed = false;
 
-        c.addEventListener("click", (e)=>{
-            // console.log(e);
-            if(figura){
-                ctx.beginPath();
-                ctx.arc(e.layerX, e.layerY, 50, 0, 2*Math.PI);
-                ctx.fill();
-                ctx.stroke(); 
-            }else{
-                ctx.fillRect(e.layerX-50, e.layerY-50, 100, 100);
-                ctx.strokeRect(e.layerX-50, e.layerY-50, 100, 100);
-            }
+        var x = 255, y = 255;
+        document.addEventListener("keydown", (e)=>{
+            // primer ejercicio: Crear cuadros aleatorios cuando se teclea
 
+            //segundo ejercicio: mover un cuadro con teclas
+            // w = 87, s= 83, d = 68, a = 65
+
+            x = Math.floor(Math.random() * 500);
+            y = Math.floor(Math.random() * 500);
+            repaint();
+           
         })
-
-        c.addEventListener("mouseout", (e)=>{
-            figura = !figura;
-        })
-
-        c.addEventListener("mouseover", (e)=>{
-            // console.log("mouseover");
-            color = random_rgba();
-            ctx.fillStyle = color;
-        })
-
-        c.addEventListener("mousemove", (e)=>{
-            // console.log("mousemove");
-            if(pressed){
-                ctx.beginPath();
-                ctx.arc(e.layerX, e.layerY, 5, 0, 2*Math.PI);
-                ctx.fill();
-            }
-        })
-
-        c.addEventListener("mousedown", (e)=>{
-            pressed = true;
-        })
-
-        c.addEventListener("mouseup", (e)=>{
-            pressed = false;
-        })
-
+        
+        function repaint(){
+            // ctx.fillStyle = "white";
+            // ctx.fillRect(0, 0, 500, 500);
+            ctx.fillStyle = random_rgba();
+            ctx.fillRect(x, y, 100, 100);
+            ctx.strokeRect(x, y, 100, 100);
+        }
+        
         function random_rgba() {
             var o = Math.round, r = Math.random, s = 255;
             return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
         }
+
+        // var figura = true;
+        // var pressed = false;
+
+        // c.addEventListener("click", (e)=>{
+        //     // console.log(e);
+        //     if(figura){
+        //         ctx.beginPath();
+        //         ctx.arc(e.layerX, e.layerY, 50, 0, 2*Math.PI);
+        //         ctx.fill();
+        //         ctx.stroke(); 
+        //     }else{
+        //         ctx.fillRect(e.layerX-50, e.layerY-50, 100, 100);
+        //         ctx.strokeRect(e.layerX-50, e.layerY-50, 100, 100);
+        //     }
+
+        // })
+
+        // c.addEventListener("mouseout", (e)=>{
+        //     figura = !figura;
+        // })
+
+        // c.addEventListener("mouseover", (e)=>{
+        //     // console.log("mouseover");
+        //     color = random_rgba();
+        //     ctx.fillStyle = color;
+        // })
+
+        // c.addEventListener("mousemove", (e)=>{
+        //     // console.log("mousemove");
+        //     if(pressed){
+        //         ctx.beginPath();
+        //         ctx.arc(e.layerX, e.layerY, 5, 0, 2*Math.PI);
+        //         ctx.fill();
+        //     }
+        // })
+
+        // c.addEventListener("mousedown", (e)=>{
+        //     pressed = true;
+        // })
+
+        // c.addEventListener("mouseup", (e)=>{
+        //     pressed = false;
+        // })
+
 
         // ctx.fillRect(20, 20, 100, 100);
         // ctx.fillStyle = "rgb(0, 0, 255)";
