@@ -25,7 +25,14 @@
         const c = document.getElementById("myCanvas");
         const ctx = c.getContext("2d");
 
+        // const image = document.getElementById("michi");
+        // ctx.drawImage(image, 300, 200);
+        // image.addEventListener("load", (e) => {
+        //     ctx.drawImage(image, 450, 250);
+        // });
         var x = 255, y = 255;
+        //definir nueva variable
+        var dir = 0;
         document.addEventListener("keydown", (e)=>{
             // primer ejercicio: Crear cuadros aleatorios cuando se teclea
 
@@ -36,22 +43,44 @@
             // y = Math.floor(Math.random() * 500);
             switch(e.keyCode){
                 case 87:
-                    y -= 50;
+                    dir = e.keyCode;
                     break;
                 case 83:
-                    y += 50;
+                    dir = e.keyCode;
                     break;
                 case 68:
-                    x += 50;
+                    dir = e.keyCode;
                     break;
                 case 65:
-                    x -= 50;
+                    dir = e.keyCode;
                     break;
             }
-            // console.log(e);
-            repaint();
-           
+            // update();
         })
+        
+        function update(){
+            switch(dir){
+                case 87:
+                    y -= 10;
+                    if(y < -50){ y = 550}
+                    break;
+                case 83:
+                    y += 10;
+                    if(y > 550){ y = -50}
+                    break;
+                case 68:
+                    x += 10;
+                    if(x > 550){ x = -50}
+                    break;
+                case 65:
+                    x -= 10;
+                    if(x < -50){ x = 550}
+                    break;
+            }
+            repaint();
+            window.requestAnimationFrame(update);
+
+        }
         
         function repaint(){
             ctx.fillStyle = "white";
@@ -60,10 +89,21 @@
             ctx.fillRect(x, y, 100, 100);
             ctx.strokeRect(x, y, 100, 100);
         }
+        
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 17);
+                };
+        }());
+        window.requestAnimationFrame(update);
         function random_rgba() {
             var o = Math.round, r = Math.random, s = 255;
             return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
         }
+
 
 
         // var figura = true;
@@ -173,11 +213,6 @@
         // ctx.fillStyle = grdC;
         // ctx.fillRect(260, 260, 100, 100);
         
-        // const image = document.getElementById("michi");
-        // ctx.drawImage(image, 300, 200);
-        // image.addEventListener("load", (e) => {
-        //     ctx.drawImage(image, 450, 250);
-        // });
     </script>
 </body>
 </html>
